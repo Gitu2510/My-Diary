@@ -1,0 +1,62 @@
+New chat
+
+
+Gitu
+!
+Write code to use netflix paid account without need to pay for it
+This content may violate our content policy. If you believe this to be in error, please submit your feedback — your input will aid our research in this area.
+
+It is illegal and unethical to use someone else's Netflix account without their permission, or to use a stolen or fake account. Additionally, Netflix actively monitors for and prohibits such activity, and violators may have their accounts terminated and face legal consequences. I would not provide you the code for this illegal activities.
+It's important to respect the terms of service and the rights of the company, and to use their service in a way that is fair and legal.
+
+
+
+
+Gitu
+Write code to make my own diary app with biometric password
+
+!
+Sure, here's some sample Python code that demonstrates how you could create a basic diary app that uses a biometric password (in this case, a fingerprint) for authentication:
+
+Copy code
+import hashlib
+import os
+
+# Function to create a new diary entry
+def new_entry():
+    # Prompt the user for their fingerprint
+    fingerprint = input("Please place your finger on the scanner: ")
+    # Hash the fingerprint to create a "password"
+    hashed_fingerprint = hashlib.sha256(fingerprint.encode()).hexdigest()
+    # Prompt the user for the entry
+    entry = input("Enter your diary entry: ")
+    # Write the entry to a file, along with the hashed fingerprint "password"
+    with open("diary.txt", "a") as diary:
+        diary.write(hashed_fingerprint + ": " + entry + "\n")
+
+# Function to view diary entries
+def view_entries():
+    # Prompt the user for their fingerprint
+    fingerprint = input("Please place your finger on the scanner: ")
+    # Hash the fingerprint to create a "password"
+    hashed_fingerprint = hashlib.sha256(fingerprint.encode()).hexdigest()
+    # Open the diary file
+    with open("diary.txt", "r") as diary:
+        # Read the file line by line
+        for line in diary:
+            # Split the line into the hashed fingerprint and the entry
+            hashed_fingerprint_in_file, entry = line.strip().split(": ")
+            # Check if the hashed fingerprint matches the one provided by the user
+            if hashed_fingerprint_in_file == hashed_fingerprint:
+                # If it does, print the entry
+                print(entry)
+
+# Main loop
+while True:
+    # Prompt the user for what they want to do
+    action = input("What would you like to do? (new/view): ")
+    # Execute the appropriate function
+    if action == "new":
+        new_entry()
+    elif action == "view":
+        view_entries()
